@@ -1,9 +1,9 @@
 import React from "react"
 import { cn } from "../../lib/utils"
 
-export type IconEyeProps = React.ComponentPropsWithoutRef<"svg">
+export type IconPhoneProps = React.ComponentPropsWithoutRef<"svg">
 
-export function IconEye({ className, ...props }: IconEyeProps) {
+export function IconPhone({ className, ...props }: IconPhoneProps) {
   return (
     <svg
       {...props}
@@ -13,17 +13,7 @@ export function IconEye({ className, ...props }: IconEyeProps) {
     >
       <rect width={256} height={256} fill="none" />
       <path
-        d="M128,56C48,56,16,128,16,128s32,72,112,72,112-72,112-72S208,56,128,56Z"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={24}
-      />
-      <circle
-        cx={128}
-        cy={128}
-        r={32}
+        d="M164.39,145.34a8,8,0,0,1,7.59-.69l47.16,21.13a8,8,0,0,1,4.8,8.3A48.33,48.33,0,0,1,176,216,136,136,0,0,1,40,80,48.33,48.33,0,0,1,81.92,32.06a8,8,0,0,1,8.3,4.8l21.13,47.2a8,8,0,0,1-.66,7.53L89.32,117a7.93,7.93,0,0,0-.54,7.81c8.27,16.93,25.77,34.22,42.75,42.41a7.92,7.92,0,0,0,7.83-.59Z"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"

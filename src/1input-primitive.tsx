@@ -1,5 +1,10 @@
 import { Button } from "./components/primitives/Button"
-import { IconMagnifying, Input, InputIconWrapper, InputRoot } from "./components/primitives/Input"
+import {
+  IconMagnifying,
+  Input,
+  InputIconWrapper,
+  InputRoot,
+} from "./components/primitives/Input"
 
 function App() {
   return (

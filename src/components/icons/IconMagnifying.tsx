@@ -4,7 +4,12 @@ export type IconMagnifyingProps = React.ComponentPropsWithoutRef<"svg">
 
 export function IconMagnifying({ className, ...props }: IconMagnifyingProps) {
   return (
-    <svg {...props} className={cn("", className)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <svg
+      {...props}
+      className={cn("", className)}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 256 256"
+    >
       <rect width={256} height={256} fill="none" />
       <circle
         cx={112}

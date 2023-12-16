@@ -1,38 +1,68 @@
 import React, { useContext } from "react"
-import { cn } from "../../lib/utils"
-import { Input as InputPrim, InputRoot, InputIconWrapper, InputContext } from "../primitives/Input"
-import st from "./InputSecret.module.css"
+import {
+  Input as InputPrim,
+  InputRoot,
+  InputIconWrapper,
+  InputContext,
+} from "../primitives/Input"
+import { Slot } from "@radix-ui/react-slot"
 
 type RootProps = React.ComponentPropsWithoutRef<typeof InputRoot>
 
-function Root({ className, ...props }: RootProps) {
-  return <InputRoot {...props} className={cn("", className)} />
+function Root(props: RootProps) {
+  return <InputRoot {...props} />
 }
 
-type InputProps = React.ComponentPropsWithoutRef<typeof InputPrim>
+export type InputProps = React.ComponentPropsWithoutRef<typeof InputPrim> & {}
 
-function Input({ className, ...props }: InputProps) {
-  return <InputPrim {...props} className={cn("", className)} />
-}
+export const Input = React.forwardRef<
+  React.ElementRef<typeof InputPrim>,
+  InputProps
+>(function InputComponent({ ...props }, ref) {
+  return <InputPrim {...props} ref={ref} />
+})
 
-type ToggleIconWrapperProps = React.ComponentPropsWithoutRef<typeof InputIconWrapper>
+Input.displayName = "Input"
 
-function ToggleIconWrapper({ className, ...props }: ToggleIconWrapperProps) {
-  const { inputModel } = useContext(InputContext)
+type ToggleIconWrapperProps = React.ComponentPropsWithoutRef<
+  typeof InputIconWrapper
+>
 
+function ToggleIconWrapper({ ...props }: ToggleIconWrapperProps) {
   return (
     <InputIconWrapper
       {...props}
-      onClick={() => {
+      onClick={inputModel => {
+        props.onClick && props.onClick(inputModel)
         inputModel.toggleSecret()
       }}
-      className={cn("", className, inputModel.isSecret ? st.isSecret : st.isNotSecret)}
     />
   )
 }
 
-export const SecretInput = {
+function OnSecretHide(props: { children: React.ReactNode }) {
+  const { inputModel } = useContext(InputContext)
+  return inputModel.isSecret ? props.children : null
+}
+
+function OnSecretShow(props: { children: React.ReactNode }) {
+  const { inputModel } = useContext(InputContext)
+  return inputModel.isSecret ? null : props.children
+}
+
+function OnSecretRotate(props: { children: React.ReactNode }) {
+  return (
+    <Slot className="group-data-[secret=true]:rotate-[136deg] transition-rotate duration-500 ease-in-out">
+      {props.children}
+    </Slot>
+  )
+}
+
+export const InputSecret = {
   Root,
   Input,
   ToggleIconWrapper,
+  OnSecretHide,
+  OnSecretShow,
+  OnSecretRotate,
 }
