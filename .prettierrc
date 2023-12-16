@@ -1,0 +1,6 @@
+{
+  "printWidth": 110,
+  "semi": false,
+  "arrowParens": "avoid",
+  "trailingComma": "es5"
+}
