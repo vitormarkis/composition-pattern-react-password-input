@@ -5,7 +5,7 @@ A principal ideia é pegar blocos de Javascript e lógicas complexas, e encapsul
 Após isso você pode compor seu componente final com os componentes abstraídos que você criou, como blocos de lego.
 
 *Primitivo*
-```tsx
+```jsx
 <InputRoot>
   <InputIconWrapper>
     // Qualquer SVG
@@ -15,7 +15,7 @@ Após isso você pode compor seu componente final com os componentes abstraídos
 ```
 
 *Rico*
-```tsx
+```jsx
 <InputSecret.Root>
   <InputSecret.Input />
   <InputSecret.ToggleIconWrapper>
